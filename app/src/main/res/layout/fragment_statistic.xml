@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatisticFragment">
+
+    <TextView
+        android:id="@+id/lblTotalUptoDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="28dp"
+        android:text="Total to date"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/lblAveragePerDay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/totalUpToDate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        android:text="- $"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/averagePerDay"
+        app:layout_constraintEnd_toStartOf="@+id/averagePerDay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblTotalUptoDate" />
+
+    <TextView
+        android:id="@+id/lblAveragePerDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:text="Average per day"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblTotalUptoDate"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/averagePerDay"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="37dp"
+        android:gravity="center"
+        android:text="- $"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lblRemainingBudget"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/totalUpToDate"
+        app:layout_constraintTop_toTopOf="@+id/lblAveragePerDay" />
+
+    <TextView
+        android:id="@+id/lbltotalExpenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:text="Total Expenses:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/totalExpense"
+        app:layout_constraintEnd_toStartOf="@+id/lblRemainingBudget"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/totalExpense"
+        android:layout_width="0dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="44dp"
+        android:gravity="center"
+        android:text="--"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/lblstartDate"
+        app:layout_constraintEnd_toStartOf="@+id/remain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/averagePerDay" />
+
+    <TextView
+        android:id="@+id/lblRemainingBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:layout_marginBottom="109dp"
+        android:text="Remaining Budget:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/startDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lbltotalExpenses"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/remain"
+        android:layout_width="0dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="46dp"
+        android:gravity="center"
+        android:text="- $"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/startDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/totalExpense"
+        app:layout_constraintTop_toBottomOf="@+id/averagePerDay" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="99dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/lblRiskAssessment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalUpToDate" />
+
+    <TextView
+        android:id="@+id/lblstartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="68dp"
+        android:text="Trip's start date:"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/lblDescription"
+        app:layout_constraintEnd_toStartOf="@+id/remain"
+        app:layout_constraintStart_toStartOf="@+id/divider2" />
+
+    <TextView
+        android:id="@+id/startDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:text="----/--/--"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/lblRiskAssessment"
+        app:layout_constraintTop_toTopOf="@+id/lblstartDate" />
+
+    <TextView
+        android:id="@+id/lblRiskAssessment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Risk Assessment:"
+        android:textSize="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/riskAssessment"
+        app:layout_constraintStart_toStartOf="@+id/lblstartDate" />
+
+    <TextView
+        android:id="@+id/riskAssessment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="N/A"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/startDate"
+        app:layout_constraintTop_toBottomOf="@+id/startDate" />
+
+    <TextView
+        android:id="@+id/lblDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="312dp"
+        android:text="Description:"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/description"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="89dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:enabled="false"
+        android:focusable="false"
+        android:gravity="top"
+        android:hint="No description."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblRiskAssessment" />
+</androidx.constraintlayout.widget.ConstraintLayout>

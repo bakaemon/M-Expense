@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/budgetFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:text="Filter list for budget"
+        app:layout_constraintBaseline_toBaselineOf="@+id/compare_budget_option"
+        app:layout_constraintEnd_toStartOf="@+id/compare_budget_option"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/compare_budget_option"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:entries="@array/compare_options"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toTopOf="@+id/dateFilter"
+        app:layout_constraintEnd_toStartOf="@+id/compare_budget"
+        app:layout_constraintStart_toEndOf="@+id/budgetFilter"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/compare_budget"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="47dp"
+        android:ems="10"
+        android:gravity="right"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintBaseline_toBaselineOf="@+id/compare_budget_option"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/compare_budget_option" />
+
+    <CheckBox
+        android:id="@+id/dateFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:text="Filter list for budget"
+        app:layout_constraintBaseline_toBaselineOf="@+id/compare_date_option"
+        app:layout_constraintEnd_toStartOf="@+id/compare_date_option"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/compare_date_option"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="30dp"
+        android:entries="@array/compare_options"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toTopOf="@+id/isFinishedFilter"
+        app:layout_constraintEnd_toStartOf="@+id/compare_date"
+        app:layout_constraintStart_toEndOf="@+id/dateFilter" />
+
+    <EditText
+        android:id="@+id/compare_date"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="47dp"
+        android:ems="10"
+        android:gravity="right"
+        android:inputType="date"
+        android:text="0"
+        app:layout_constraintBaseline_toBaselineOf="@+id/compare_date_option"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/compare_date_option" />
+
+    <RadioGroup
+        android:id="@+id/isFinishedFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="166dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/isFinished"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Finished" />
+
+        <RadioButton
+            android:id="@+id/isNotFinished"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:text="Not Finished" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

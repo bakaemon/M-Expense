@@ -1,0 +1,218 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "791ab72f309971c5ffe9297e8a6f986a",
+    "entities": [
+      {
+        "tableName": "Trip",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`tripId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `tripName` TEXT, `startDate` TEXT, `tripDate` INTEGER NOT NULL, `tripBudget` REAL NOT NULL DEFAULT 0, `tripCurrency` TEXT DEFAULT '$', `tripIsFinished` INTEGER NOT NULL, `needAssessment` INTEGER NOT NULL, `tripDescription` TEXT DEFAULT '')",
+        "fields": [
+          {
+            "fieldPath": "tripId",
+            "columnName": "tripId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tripName",
+            "columnName": "tripName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "startDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tripDate",
+            "columnName": "tripDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tripBudget",
+            "columnName": "tripBudget",
+            "affinity": "REAL",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "tripCurrency",
+            "columnName": "tripCurrency",
+            "affinity": "TEXT",
+            "notNull": false,
+            "defaultValue": "'$'"
+          },
+          {
+            "fieldPath": "tripIsFinished",
+            "columnName": "tripIsFinished",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "needAssessment",
+            "columnName": "needAssessment",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tripDescription",
+            "columnName": "tripDescription",
+            "affinity": "TEXT",
+            "notNull": false,
+            "defaultValue": "''"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "tripId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Expense",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`expenseId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `expenseDate` TEXT, `expenseAmount` REAL NOT NULL, `expenseDescription` TEXT, `expenseTypeId` INTEGER, `expenseTypeName` TEXT, `tripId` INTEGER, `tripName` TEXT, `startDate` TEXT, `tripDate` INTEGER, `tripBudget` REAL DEFAULT 0, `tripCurrency` TEXT DEFAULT '$', `tripIsFinished` INTEGER, `needAssessment` INTEGER, `tripDescription` TEXT DEFAULT '')",
+        "fields": [
+          {
+            "fieldPath": "expenseId",
+            "columnName": "expenseId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expenseDate",
+            "columnName": "expenseDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "expenseAmount",
+            "columnName": "expenseAmount",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expenseDescription",
+            "columnName": "expenseDescription",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "expenseType.expenseTypeId",
+            "columnName": "expenseTypeId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "expenseType.expenseTypeName",
+            "columnName": "expenseTypeName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trip.tripId",
+            "columnName": "tripId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trip.tripName",
+            "columnName": "tripName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trip.startDate",
+            "columnName": "startDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trip.tripDate",
+            "columnName": "tripDate",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trip.tripBudget",
+            "columnName": "tripBudget",
+            "affinity": "REAL",
+            "notNull": false,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "trip.tripCurrency",
+            "columnName": "tripCurrency",
+            "affinity": "TEXT",
+            "notNull": false,
+            "defaultValue": "'$'"
+          },
+          {
+            "fieldPath": "trip.tripIsFinished",
+            "columnName": "tripIsFinished",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trip.needAssessment",
+            "columnName": "needAssessment",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "trip.tripDescription",
+            "columnName": "tripDescription",
+            "affinity": "TEXT",
+            "notNull": false,
+            "defaultValue": "''"
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "expenseId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "expense_type",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`expenseTypeId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `expenseTypeName` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "expenseTypeId",
+            "columnName": "expenseTypeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expenseTypeName",
+            "columnName": "expenseTypeName",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "expenseTypeId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '791ab72f309971c5ffe9297e8a6f986a')"
+    ]
+  }
+}

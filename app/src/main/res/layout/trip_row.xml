@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tripName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trip Name"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tripDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trip Date"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tripCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="$ - "
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tripBudget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trip Cost"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    
+</androidx.cardview.widget.CardView>

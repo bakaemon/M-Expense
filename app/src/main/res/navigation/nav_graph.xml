@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/TripFragment">
+
+    <fragment
+        android:id="@+id/TripFragment"
+        android:name="com.tqb.m_expense.TripFragment"
+        android:label="Trips"
+        tools:layout="@layout/fragment_trip">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/StatisticFragment" />
+        <action
+            android:id="@+id/action_TripFragment_to_editorFragment"
+            app:destination="@id/editorFragment" />
+        <action
+            android:id="@+id/action_TripFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/StatisticFragment"
+        android:name="com.tqb.m_expense.StatisticFragment"
+        android:label="Statistics"
+        tools:layout="@layout/fragment_statistic">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/TripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editorFragment"
+        android:name="com.tqb.m_expense.EditorFragment"
+        android:label="{editor_label}"
+        tools:layout="@layout/fragment_editor">
+        <argument
+            android:name="editor_label"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_editorFragment_to_TripFragment"
+            app:destination="@id/TripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.tqb.m_expense.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_TripFragment"
+            app:destination="@id/TripFragment" />
+    </fragment>
+</navigation>
