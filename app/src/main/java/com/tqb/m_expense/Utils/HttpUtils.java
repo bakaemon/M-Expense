@@ -15,6 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -208,7 +209,7 @@ public class HttpUtils {
     private void writeContent(HttpURLConnection urlConnection, String data) throws IOException {
         urlConnection.setInstanceFollowRedirects( autoRedirectEnabled );
         logger.finest(data);
-        byte[] bytes = data.getBytes("UTF-8");
+        byte[] bytes = data.getBytes(StandardCharsets.UTF_8);
         urlConnection.setDoOutput(true);
         urlConnection.setFixedLengthStreamingMode(bytes.length);
         OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
@@ -266,6 +267,7 @@ public class HttpUtils {
         if (input == null) return;
 
         if (stream != null) {
+
             byte[] buffer = new byte[512];
             int byteLetti;
             while ((byteLetti = input.read(buffer)) > 0) {

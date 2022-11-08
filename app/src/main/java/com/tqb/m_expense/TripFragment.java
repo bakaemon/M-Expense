@@ -26,13 +26,20 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.tqb.m_expense.Database.DatabaseHelper;
+import com.tqb.m_expense.Database.Entity.Trip;
 import com.tqb.m_expense.Utils.DateUtils;
+import com.tqb.m_expense.Utils.HttpUtils;
 import com.tqb.m_expense.Utils.LoadingScreen;
+import com.tqb.m_expense.Utils.Payload;
 import com.tqb.m_expense.View.Adapter.TripRecycleViewAdapter;
 import com.tqb.m_expense.View.Model.TripView;
 import com.tqb.m_expense.View.Model.TripViewModel;
 import com.tqb.m_expense.databinding.FragmentTripBinding;
 
+import org.json.JSONObject;
+
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -100,10 +107,6 @@ public class TripFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
         menuInflater.inflate(R.menu.menu_main, menu);
-        menu.add("Refresh").setIcon(R.drawable.ic_baseline_refresh_24).setOnMenuItemClickListener(item -> {
-            tripViewModel.getData().observe(getViewLifecycleOwner(), this::loadRecycleView);
-            return true;
-        });
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -193,8 +196,16 @@ public class TripFragment extends Fragment {
                    .show();
            return true;
         });
-        menu.findItem(R.id.action_settings).setOnMenuItemClickListener(item -> {
-            navigate(R.id.action_TripFragment_to_settingFragment, null);
+        menu.findItem(R.id.action_upload).setOnMenuItemClickListener(item -> {
+            new AlertDialog.Builder(requireContext())
+                    .setTitle("Upload")
+                    .setMessage("Are you sure you want to upload?")
+                    .setPositiveButton("OK", (dialog, which) -> {
+                        uploadTrips();
+                        dialog.dismiss();
+                    })
+                    .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                    .show();
             return true;
         });
     }
@@ -210,7 +221,7 @@ public class TripFragment extends Fragment {
                             intent.putExtra("trip_id", tripViews.get(position).getTripId());
                             expenseActivityLauncher.launch(intent);
                         } catch (Exception e) {
-                            Toast.makeText(requireContext(), "Error: item may does not exist. Please refresh.",
+                            Toast.makeText(requireContext(), "Error: item may does not exist. Please restart the app.",
                                     Toast.LENGTH_SHORT).show();
                         }
                         return null;
@@ -221,5 +232,73 @@ public class TripFragment extends Fragment {
         });
         binding.tripRecyclerView.setAdapter(adapter);
         binding.tripRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+    }
+    public void uploadTrips() {
+        Payload payload = new Payload();
+        List<Payload.Data> tripPayloadData = new ArrayList<>();
+        tripViewModel.getRaw().observe(getViewLifecycleOwner(), trips -> {
+            for (Trip trip : trips) {
+                tripPayloadData.add(trip.toPayload());
+            }
+            payload.setDetailList(tripPayloadData);
+            payload.setUserId("wm123");
+            LoadingScreen
+                    .<Void, Void, String>beginTransition(getContext())
+                    .doTask(voids -> {
+                        try {
+                            return new HttpUtils()
+                                    .postJson(new URL("http://cwservice1786.herokuapp.com/sendPayLoad"),
+                                            payload.toJson(), "jsonpayload");
+                        } catch (Exception e) {
+                            errorDialog("Unknown error", e);
+                        }
+                        return null;
+                    })
+                    .done(response -> {
+                        if (response != null) {
+                            responseDialog(response, payload);
+                        } else {
+                            errorDialog("Response is null!", null);
+                        }
+                    })
+                    .execute();
+        });
+    }
+    private void responseDialog(String response, Payload payload) {
+        try {
+            JSONObject json = new JSONObject(response);
+            String message = "Message: " + json.getString("message") +"\n" +
+                    "User ID: " + json.getString("userid") + "\n" +
+                    "Number of trips uploaded: " + json.getString("number") + "\n";
+            if (payload != null) message += "Payload: \n" + payload.toJson();
+            if (json.getString("uploadResponseCode").equals("SUCCESS")) {
+                new AlertDialog.Builder(getContext())
+                        .setTitle(json.getString("uploadResponseCode"))
+                        .setMessage(message)
+                        .setNeutralButton("OK", (dialog, which) -> {
+                            dialog.dismiss();
+                        })
+                        .show();
+            } else {
+                new AlertDialog.Builder(getContext())
+                        .setTitle(json.getString("uploadResponseCode"))
+                        .setMessage(json.getString("message"))
+                        .setNeutralButton("OK", (dialog, which) -> {
+                            dialog.dismiss();
+                        })
+                        .show();
+            }
+        } catch (Exception e) {
+            errorDialog("Unknown error", e);
+        }
+    }
+    private void errorDialog(String default_msg, Exception e) {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Error")
+                .setMessage(e != null ? e.getMessage() : default_msg)
+                .setNeutralButton("OK", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .show();
     }
 }
