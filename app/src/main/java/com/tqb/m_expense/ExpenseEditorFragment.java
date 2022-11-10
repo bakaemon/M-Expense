@@ -104,6 +104,10 @@ public class ExpenseEditorFragment extends Fragment {
             requireActivity().setTitle("Add Expense");
             binding.expenseDate.setText(DateUtils.getCurrentDate());
             binding.submitButton.setOnClickListener((v) -> {
+                if (!InputUtils.checkInput(getContext(),binding.amount, binding.expenseDate)) {
+                    Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 v.setAlpha(0.5f);
                 v.setEnabled(false);
                 Expense expense = new Expense();

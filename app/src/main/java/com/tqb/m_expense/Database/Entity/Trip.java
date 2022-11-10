@@ -17,6 +17,7 @@ public class Trip implements EntityInterface{
     private int tripId;
     @ColumnInfo
     private String tripName;
+    private String tripDestination;
     @ColumnInfo
     private String startDate;
     @ColumnInfo
@@ -47,6 +48,14 @@ public class Trip implements EntityInterface{
 
     public void setTripName(String tripName) {
         this.tripName = tripName;
+    }
+
+    public String getTripDestination() {
+        return tripDestination;
+    }
+
+    public void setTripDestination(String tripDestination) {
+        this.tripDestination = tripDestination;
     }
 
     public String getStartDate() {

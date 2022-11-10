@@ -86,6 +86,7 @@ public class EditorFragment extends Fragment {
                 try {
                     Trip trip = tripDao.getTripById(getArguments().getInt("tripId"));
                     binding.tripName.setText(trip.getTripName());
+                    binding.tripDestination.setText(trip.getTripDestination());
                     binding.tripCurrency.setText(trip.getTripCurrency());
                     binding.tripBudget.setText(String.valueOf(trip.getTripBudget()));
                     binding.startDate.setText(trip.getStartDate());
@@ -124,6 +125,10 @@ public class EditorFragment extends Fragment {
         if (binding.startDate.getText().toString().isEmpty()) {
             throw new Exception("Start date is null.");
         }
+        trip.setTripDestination(binding.tripDestination.getText().toString());
+        if (binding.tripDestination.getText().toString().isEmpty()) {
+            throw new Exception("Destination is null.");
+        }
         Date startDate;
         if (binding.startDate.getText().toString().equals("Today")) {
             trip.setStartDate(DateUtils.getFormattedDate(new Date()));
@@ -159,6 +164,7 @@ public class EditorFragment extends Fragment {
         assert getArguments() != null;
         Trip trip = tripDao.getTripById(getArguments().getInt("tripId"));
         trip.setTripName(binding.tripName.getText().toString());
+        trip.setTripDestination(binding.tripDestination.getText().toString());
         Date startDate = DateUtils.getDate(binding.startDate.getText().toString());
         trip.setStartDate(binding.startDate.getText().toString());
         Date endDate = DateUtils.getDate(binding.endDate.getText().toString());

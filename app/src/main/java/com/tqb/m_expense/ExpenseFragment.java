@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -69,9 +70,10 @@ public class ExpenseFragment extends Fragment {
             Toast.makeText(requireContext(), "Error: Incorrect arguments.", Toast.LENGTH_SHORT).show();
             requireActivity().finish();
         }
-        Activity activity = (ExpenseActivity)requireActivity();
+        Activity activity = requireActivity();
         tripViewModel.getRawById(tripId).observe(getViewLifecycleOwner(), trip -> {
             binding.toolbarExpense.setTitle(trip.getTripName());
+            binding.toolbarExpense.setSubtitle(trip.getTripDestination());
         });
 
         binding.toolbarExpense.setNavigationIcon(R.drawable.ic_arrow_back_24);
@@ -113,16 +115,12 @@ public class ExpenseFragment extends Fragment {
                             .setMessage("Are you sure you want to delete this trip?")
                             .setNegativeButton("No", null)
                             .setPositiveButton("Yes", (dialog, which) -> {
-                                tripViewModel.deleteTrip(tripId).observe(getViewLifecycleOwner(), isSuccess -> {
-                                    if (isSuccess) {
-                                        Intent intent = new Intent();
-                                        intent.putExtra("toast_msg", "Trip deleted successfully.");
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        requireActivity().setResult(Activity.RESULT_OK, intent);
-                                        requireActivity().finish();
-                                    } else {
-                                        Toast.makeText(getContext(), "Error: Trip not deleted.", Toast.LENGTH_SHORT).show();
-                                    }
+                                tripViewModel.deleteTrip(tripId).observe(getViewLifecycleOwner(), x -> {
+                                    Intent intent = new Intent();
+                                    intent.putExtra("toast_msg", "Trip deleted successfully.");
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    requireActivity().setResult(Activity.RESULT_OK, intent);
+                                    requireActivity().finish();
                                 });
 
                             })

@@ -20,33 +20,64 @@
 
     <EditText
         android:id="@+id/tripName"
-        android:layout_width="378dp"
-        android:layout_height="38dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
         android:ems="10"
         android:hint="Trip name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/tripBudget"
+        app:layout_constraintBottom_toTopOf="@+id/tripDestination"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/tripBudget"
-        android:layout_width="376dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/tripDestination"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
         android:layout_marginBottom="13dp"
+        android:ems="10"
+        android:hint="Destination"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/tripBudget"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tripName" />
+
+    <EditText
+        android:id="@+id/tripBudget"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Trip Budget (Optional)"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripName" />
+        app:layout_constraintTop_toBottomOf="@+id/tripDestination" />
+
+    <EditText
+        android:id="@+id/tripCurrency"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="9dp"
+        android:ems="5"
+        android:hint="eg. USD, CAD, EUR or $, €, £"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
         android:id="@+id/textView10"
@@ -59,19 +90,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tripBudget" />
 
     <EditText
-        android:id="@+id/tripCurrency"
-        android:layout_width="377dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="14dp"
-        android:ems="5"
-        android:hint="eg. USD, CAD, EUR or $, €, £"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        android:id="@+id/startDate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
@@ -84,36 +114,12 @@
         app:layout_constraintTop_toBottomOf="@+id/tripCurrency" />
 
     <EditText
-        android:id="@+id/startDate"
-        android:layout_width="377dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:text="End date"
-        app:layout_constraintBottom_toTopOf="@+id/endDate"
-        app:layout_constraintStart_toStartOf="@+id/endDate"
-        app:layout_constraintTop_toBottomOf="@+id/startDate" />
-
-    <EditText
         android:id="@+id/endDate"
-        android:layout_width="373dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
@@ -122,25 +128,33 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="End date"
+        app:layout_constraintBottom_toTopOf="@+id/endDate"
+        app:layout_constraintStart_toStartOf="@+id/endDate"
+        app:layout_constraintTop_toBottomOf="@+id/startDate" />
+
+    <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginStart="3dp"
         android:text="Risk Assessment"
         app:layout_constraintBottom_toTopOf="@+id/riskAssessment"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/riskAssessment"
         app:layout_constraintTop_toBottomOf="@+id/endDate" />
 
     <RadioGroup
         android:id="@+id/riskAssessment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginStart="5dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView8">
         >
 
@@ -159,23 +173,14 @@
             android:text="No" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="Description (Optional)"
-        app:layout_constraintBottom_toTopOf="@+id/tripDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/riskAssessment" />
-
     <EditText
         android:id="@+id/tripDescription"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="514dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:gravity="start"
         android:hint="Describe your trip..."
@@ -183,7 +188,17 @@
         app:layout_constraintBottom_toTopOf="@+id/fabSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:text="Description (Optional)"
+        app:layout_constraintBottom_toTopOf="@+id/tripDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/riskAssessment" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

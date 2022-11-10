@@ -241,7 +241,7 @@ public class TripFragment extends Fragment {
                 tripPayloadData.add(trip.toPayload());
             }
             payload.setDetailList(tripPayloadData);
-            payload.setUserId("wm123");
+            payload.setUserId("abcd");
             LoadingScreen
                     .<Void, Void, String>beginTransition(getContext())
                     .doTask(voids -> {
