@@ -51,7 +51,7 @@ public class EditorFragment extends Fragment {
         binding.endDate.setOnClickListener(v -> {
             DateUtils.showDatePickerDialog(requireContext(), binding.endDate);
         });
-
+        // set title based on the mode
         switch (getArguments().getString("editorMode")) {
             case "add":
                 requireActivity().setTitle("Add Trip");
@@ -74,6 +74,7 @@ public class EditorFragment extends Fragment {
         assert getArguments() != null;
         switch (getArguments().getString("editorMode")) {
             case "add":
+                // on insert mode, the submit button will run submitAdd() method
                 binding.fabSubmit.setOnClickListener(v -> {
                     try {
                         submitAdd();
@@ -83,6 +84,8 @@ public class EditorFragment extends Fragment {
                 });
                 break;
             case "edit":
+                // on edit mode, trip data will be taken from the database, based on tripId
+                // sent here by bundle
                 try {
                     Trip trip = tripDao.getTripById(getArguments().getInt("tripId"));
                     binding.tripName.setText(trip.getTripName());
@@ -117,6 +120,7 @@ public class EditorFragment extends Fragment {
 
 
     private void submitAdd() throws Exception {
+        // firstly, validation, if any of the required input is invalid, prevent submitting
         if (!checkInput(getContext(), binding.tripName, binding.startDate, binding.endDate, binding.riskAssessment)) {
             return;
         }

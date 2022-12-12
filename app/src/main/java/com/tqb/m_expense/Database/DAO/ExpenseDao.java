@@ -15,8 +15,6 @@ public interface ExpenseDao extends BaseDao<Expense> {
     Expense getExpenseById(int expenseId);
     @Query("SELECT * FROM expense WHERE tripId = :tripId")
     Expense[] getExpensesByTripId(int tripId);
-    @Query("SELECT * FROM expense WHERE expenseTypeId = :expenseTypeId")
-    Expense[] getExpensesByExpenseTypeId(int expenseTypeId);
     @Query("SELECT * FROM expense WHERE expenseTypeName LIKE :expenseTypeName")
     Expense[] getExpensesByTypeNameLike(String expenseTypeName);
     @Query("DELETE FROM expense WHERE expenseId = :expenseId")
@@ -27,9 +25,6 @@ public interface ExpenseDao extends BaseDao<Expense> {
     // get total expense
     @Query("SELECT SUM(expenseAmount) FROM expense WHERE tripId = :tripId")
     double getTotalAmount(int tripId);
-    // count
-    @Query("SELECT COUNT(expenseId) FROM expense")
-    int getRowsCount();
     @Query("SELECT COUNT(expenseId) FROM expense WHERE tripId = :tripId")
     int getRowsCount(int tripId);
 }

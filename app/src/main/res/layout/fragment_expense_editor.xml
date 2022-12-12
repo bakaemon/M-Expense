@@ -2,113 +2,191 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ExpenseEditorFragment">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/lblExpenseType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Expense Type"
-        app:layout_constraintStart_toStartOf="@+id/expenseType"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="87dp" />
 
     <Spinner
         android:id="@+id/expenseType"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="27dp"
-        app:layout_constraintBottom_toTopOf="@+id/lblExpenseDate"
-        app:layout_constraintEnd_toStartOf="@+id/lblAmount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lblExpenseType" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toStartOf="@+id/lblExpenseType"
+        app:layout_constraintTop_toBottomOf="@+id/lblExpenseType"
+        tools:layout_conversion_absoluteHeight="43dp"
+        tools:layout_conversion_absoluteWidth="202dp" />
 
     <TextView
         android:id="@+id/lblExpenseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="105dp"
-        android:layout_marginBottom="98dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="107dp"
         android:text="Expense Date"
-        app:layout_constraintBottom_toBottomOf="@+id/lblDescription"
-        app:layout_constraintStart_toStartOf="@+id/expenseDate"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="85dp" />
 
     <EditText
         android:id="@+id/expenseDate"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginBottom="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/lblDescription"
-        app:layout_constraintEnd_toStartOf="@+id/amount"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/lblExpenseDate" />
+        app:layout_constraintStart_toStartOf="@+id/lblExpenseDate"
+        app:layout_constraintTop_toBottomOf="@+id/lblExpenseDate"
+        tools:layout_conversion_absoluteHeight="45dp"
+        tools:layout_conversion_absoluteWidth="156dp" />
 
     <TextView
         android:id="@+id/lblAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Amount"
-        app:layout_constraintStart_toStartOf="@+id/amount"
-        app:layout_constraintTop_toBottomOf="@+id/expenseType" />
+        app:layout_constraintBottom_toTopOf="@+id/amount"
+        app:layout_constraintStart_toEndOf="@+id/expenseDate"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="49dp" />
 
     <EditText
         android:id="@+id/amount"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="4dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="95dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/expenseDate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/expenseDate"
-        app:layout_constraintTop_toBottomOf="@+id/lblAmount" />
+        app:layout_constraintBottom_toBottomOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="@+id/picture_preview"
+        app:layout_constraintStart_toStartOf="@+id/lblAmount"
+        app:layout_constraintTop_toTopOf="@+id/expenseType"
+        tools:layout_conversion_absoluteHeight="43dp"
+        tools:layout_conversion_absoluteWidth="155dp" />
 
     <TextView
         android:id="@+id/lblDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="2dp"
         android:text="Description"
         app:layout_constraintBottom_toTopOf="@+id/description"
-        app:layout_constraintStart_toStartOf="@+id/description" />
+        app:layout_constraintStart_toStartOf="@+id/description"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="71dp" />
 
     <EditText
         android:id="@+id/description"
-        android:layout_width="375dp"
-        android:layout_height="183dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="222dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expenseDate"
+        tools:layout_conversion_absoluteHeight="57dp"
+        tools:layout_conversion_absoluteWidth="387dp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="26dp"
+        android:text="Location"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="54dp" />
+
+    <ImageButton
+        android:id="@+id/autoSetLocationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_baseline_location_on_24"
+        app:layout_constraintBottom_toTopOf="@+id/picture_preview"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_conversion_absoluteHeight="37dp"
+        tools:layout_conversion_absoluteWidth="50dp" />
+
+    <!--        <com.google.android.gms.maps.MapView-->
+    <!--            android:id="@+id/mapView"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="250dp"-->
+    <!--            tools:layout_editor_absoluteX="10dp"-->
+    <!--            tools:layout_editor_absoluteY="358dp" />-->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:text="Take a picture"
+        app:layout_constraintBottom_toTopOf="@+id/picture_preview"
+        app:layout_constraintStart_toStartOf="@+id/picture_preview"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="88dp" />
+
+    <ImageView
+        android:id="@+id/picture_preview"
+        android:layout_width="0dp"
+        android:layout_height="254dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="101dp"
+        android:src="@drawable/ic_baseline_camera_alt_24"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description"
+        tools:layout_conversion_absoluteHeight="124dp"
+        tools:layout_conversion_absoluteWidth="383dp" />
 
     <Button
         android:id="@+id/submitButton"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="77dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="197dp" />
 
+    <TextView
+        android:id="@+id/latLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="26dp"
+        android:gravity="center_horizontal"
+        android:text="Lat: 0.0, Long: 0.0"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        tools:layout_conversion_absoluteHeight="40dp"
+        tools:layout_conversion_absoluteWidth="161dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

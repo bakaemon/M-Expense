@@ -62,7 +62,7 @@ public class ExpensesFragment extends Fragment {
         super.onResume();
         Objects.requireNonNull(binding.expenseRecycleView.getAdapter()).notifyDataSetChanged();
     }
-
+    // it's the same with TripFragment
     private void loadRecycleView(List<ExpenseView> expenseViews) {
         ExpenseRecycleViewAdapter adapter = new ExpenseRecycleViewAdapter(requireContext(), expenseViews);
         adapter.setOnItemClickListener((view, position) -> {

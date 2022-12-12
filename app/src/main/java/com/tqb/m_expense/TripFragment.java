@@ -56,7 +56,8 @@ public class TripFragment extends Fragment {
                     if (resultIntent.getBooleanExtra("show_toast", true)) {
                         Toast.makeText(requireContext(), resultIntent.getStringExtra("toast_msg"), Toast.LENGTH_SHORT).show();
                     }
-                    // reload rv
+                    // the data will be received here, and the result goes to the loadRecyclerView
+                    // method
                     tripViewModel.getData().observe(getViewLifecycleOwner(), this::loadRecycleView);
                 }
             }
@@ -85,8 +86,10 @@ public class TripFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // this is the fab
         binding.fabAddTrip.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
+            // this is to make the editor fragment change to "add" mode
             bundle.putString("editorMode", "add");
             bundle.putString("editor_label", "Add Trip");
             navigate(R.id.action_TripFragment_to_editorFragment, bundle);
@@ -210,6 +213,8 @@ public class TripFragment extends Fragment {
         });
     }
 
+    // this is the code for loading the recyclerview, it's a callback of the livedata
+    // which represent the trip in the database
     private void loadRecycleView(List<TripView> tripViews) {
         TripRecycleViewAdapter adapter = new TripRecycleViewAdapter(requireContext(), tripViews);
         adapter.setOnItemClickListener((view, position) -> {

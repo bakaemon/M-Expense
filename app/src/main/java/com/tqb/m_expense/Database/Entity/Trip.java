@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.util.Date;
 
 @Entity
-public class Trip implements EntityInterface{
+public class Trip{
     @PrimaryKey(autoGenerate = true)
     private int tripId;
     @ColumnInfo
@@ -114,12 +114,6 @@ public class Trip implements EntityInterface{
         this.tripDescription = tripDescription;
     }
 
-    public JSONObject toJSON() throws JSONException {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name", tripName);
-        jsonObject.put("description", tripDescription == null ? "" : tripDescription);
-        return jsonObject;
-    }
     public Payload.Data toPayload() {
         return new Payload.Data(this);
     }

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.tqb.m_expense.Database.DatabaseHelper;
+import com.tqb.m_expense.Utils.CameraUtil;
 import com.tqb.m_expense.View.Model.ExpenseViewModel;
 import com.tqb.m_expense.databinding.FragmentExpenseDetailBinding;
 
@@ -48,6 +49,15 @@ public class ExpenseDetailFragment extends Fragment {
             binding.budget.setText(String.valueOf(expense.getExpenseAmount()));
             binding.date.setText(expense.getExpenseDate());
             binding.comment.setText(expense.getExpenseDescription());
+            String latLong = expense.getExpenseLocation();
+            binding.latLong.setText(String.format("Lat: %.2f, Long: %.2f",
+                    Float.parseFloat(latLong.split(",")[0]),
+                    Float.parseFloat(latLong.split(",")[1])));
+            if (expense.getExpenseImage() != null) {
+                if (expense.getExpenseImage().length() > 0) {
+                    binding.imageView.setImageBitmap(CameraUtil.decodeBase64(expense.getExpenseImage()));
+                }
+            }
         });
         binding.toolbarExpenseDetail.addMenuProvider(new MenuProvider() {
             @Override

@@ -9,8 +9,6 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import com.tqb.m_expense.Database.Entity.EntityInterface;
-import com.tqb.m_expense.ExpenseFragment;
 import com.tqb.m_expense.ExpensesFragment;
 import com.tqb.m_expense.R;
 import com.tqb.m_expense.StatisticFragment;

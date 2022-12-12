@@ -8,7 +8,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Expense implements EntityInterface{
+public class Expense{
     @PrimaryKey(autoGenerate = true)
     private int expenseId;
     @Embedded
@@ -19,10 +19,21 @@ public class Expense implements EntityInterface{
     private double expenseAmount;
     @ColumnInfo
     private String expenseDescription;
+    private String expenseImage;
+    private String expenseLocation;
+
     @Embedded
     private Trip trip;
 
     public Expense() {}
+
+    public String getExpenseImage() {
+        return expenseImage;
+    }
+
+    public void setExpenseImage(String expenseImage) {
+        this.expenseImage = expenseImage;
+    }
 
     public Trip getTrip() {
         return trip;
@@ -69,5 +80,13 @@ public class Expense implements EntityInterface{
 
     public void setExpenseDescription(String expenseDescription) {
         this.expenseDescription = expenseDescription;
+    }
+
+    public String getExpenseLocation() {
+        return expenseLocation;
+    }
+
+    public void setExpenseLocation(String expenseLocation) {
+        this.expenseLocation = expenseLocation;
     }
 }

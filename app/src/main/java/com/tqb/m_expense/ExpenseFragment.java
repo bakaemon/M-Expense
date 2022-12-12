@@ -103,9 +103,11 @@ public class ExpenseFragment extends Fragment {
                 }
                 if ("Edit".contentEquals(title)) {
                     Bundle bundle = new Bundle();
+                    // the tripId is put in the bundle from here
                     bundle.putInt("tripId", tripId);
                     bundle.putString("editorMode", "edit");
                     bundle.putString("editor_label", "Edit Trip");
+                    // and get sent to here
                     switchFragment(new EditorFragment(), bundle);
                     return true;
                 } else if ("Delete".contentEquals(title)) {
